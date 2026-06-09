@@ -6,7 +6,7 @@
 	<head>
 	    <meta charset="UTF-8">
 	    <title>Task Manager - Login</title>
-	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
 	</head>
 	<body>
 		<div class="login-container">
@@ -31,6 +31,6 @@
 		    </form>
 		</div>
 	</body>
-	<script src="${pageContext.request.contextPath}/js/lib/jquery-4.0.0.slim.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/login.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/lib/jquery-4.0.0.slim.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 </html>

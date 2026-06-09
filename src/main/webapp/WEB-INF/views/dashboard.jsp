@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	    <div class="container">
-			<jsp:include page="/WEB-INF/views/fragments/header.jsp"/>
+			<%@ include file="/WEB-INF/views/fragments/header.jsp" %>
 			
 	        <div class="area-body">
 				<jsp:include page="/WEB-INF/views/fragments/menu.jsp"/>

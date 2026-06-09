@@ -7,7 +7,9 @@
 	</head>
 	<body>
 		<div>
-		    footer
+		    <p>&copy; 2026 Task Manager</p>
 		</div>
 	</body>
+	<script src="${jsBootstrap}"></script>
+	<script src="${jsMain}"></script>
 </html>
