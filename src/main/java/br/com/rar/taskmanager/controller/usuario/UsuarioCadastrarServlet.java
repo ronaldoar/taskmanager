@@ -2,6 +2,7 @@ package br.com.rar.taskmanager.controller.usuario;
 
 import java.io.IOException;
 
+import br.com.rar.taskmanager.controller.commons.ValidatorCommons;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +20,17 @@ public class UsuarioCadastrarServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 String username = req.getParameter("username");
+		
+		 String username 	= req.getParameter("username");
+		 String nomeCompl 	= req.getParameter("nomeCompl");
+		 String celular 	= req.getParameter("celular");
+		 String email 		= req.getParameter("email");
+		 String senha 		= req.getParameter("senha");
+		 String confSenha 	= req.getParameter("confSenha");
+		 String ativo 	    = req.getParameter("ativo");
+		 
+		 ValidatorCommons.validar(username, nomeCompl, celular, email, senha, confSenha);
+		 
 		 req.getRequestDispatcher("/WEB-INF/views/usuario/criar.jsp").forward(req, resp);
 	}
 	
