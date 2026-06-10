@@ -9,4 +9,8 @@
 <c:set var="jsBootstrap" value="${ctx}/resources/js/lib/jquery-4.0.0.slim.min.js" />
 <c:set var="jsMain" value="${ctx}/resources/js/main.js" />
 
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="${ctx}/resources/css/sb-admin-2.min.css" rel="stylesheet">
+
 

@@ -4,8 +4,6 @@
 	<head>
 		<meta charset="UTF-8">
 	    <title>Task Manager - Dashboard</title>
-	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
-   		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 	</head>
 	<body>
 		<div class="container">
@@ -23,7 +21,10 @@
 	                  </nav>
 	                </div>
 	                <div class="content-modulo-app">
-	                   criar tarefas
+	                   <label>Nome:</label>
+	                   <input type="text" placeholder="nome da tarefa aqui."/>
+	                    <label>Descrição:</label>
+	                   <input type="text" placeholder="nome da tarefa aqui."/>
 	                </div>
 	            </div>
 	        </div>

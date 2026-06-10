@@ -4,8 +4,6 @@
 	<head>
 		<meta charset="UTF-8">
 	    <title>Task Manager - Dashboard</title>
-	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
-   		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 	</head>
 	<body>
 		<div class="container">
