@@ -1,4 +1,4 @@
-package br.com.rar.taskmanager.controller.equipe;
+package br.com.rar.taskmanager.controller.contato;
 
 import java.io.IOException;
 

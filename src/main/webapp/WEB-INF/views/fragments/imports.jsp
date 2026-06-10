@@ -13,8 +13,8 @@
 <link href="${ctx}/resources/css/app.css" rel="stylesheet">
 <link href="${ctx}/resources/css/icons.css" rel="stylesheet">
 
-<c:set var="bootstrap" value="${ctx}/resources/js/lib/bootstrap.bundle.min.js" />
 <c:set var="jquery" value="${ctx}/resources/js/lib/jquery-4.0.0.slim.min.js" />
+<c:set var="bootstrap" value="${ctx}/resources/js/lib/bootstrap.bundle.min.js" />
 <c:set var="simplebar" value="${ctx}/resources/js/plugins/simplebar/js/simplebar.min.js" />
 <c:set var="metisMenu" value="${ctx}/resources/js/plugins/metismenu/js/metisMenu.min.js" />
 <c:set var="perfectScrollbar" value="${ctx}/resources/js/plugins/perfect-scrollbar/js/perfect-scrollbar.js" />
@@ -28,7 +28,3 @@
 <script src="${perfectScrollbar}"></script>
 <script src="${pace}"></script>
 <script src="${app}"></script>
-
-
-
-
