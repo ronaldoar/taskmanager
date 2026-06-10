@@ -53,7 +53,10 @@
 				</a>
 				<ul>
 					<li> 
-						<a href="#"><i class="bx bx-right-arrow-alt"></i>Pessoas</a>
+						<a href="${pageContext.request.contextPath}/contato/listar"><i class="bx bx-right-arrow-alt"></i>Contatos</a>
+					</li>
+					<li> 
+						<a href="${pageContext.request.contextPath}/contato/cadastrar"><i class="bx bx-right-arrow-alt"></i>Novo contato</a>
 					</li>
 					<li> 
 						<a href="#"><i class="bx bx-right-arrow-alt"></i>Grupos</a>

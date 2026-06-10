@@ -7,7 +7,7 @@
 			<%@ include file="/WEB-INF/views/fragments/menu.jsp" %>
 		    <div class="page-wrapper">
 				<div class="page-content">
-					tarefas.........
+					cadastrar contatos.........
 				</div>
 			</div>
 			<jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
