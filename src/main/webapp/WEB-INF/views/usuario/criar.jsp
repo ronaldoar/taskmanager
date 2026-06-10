@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -82,7 +84,8 @@
 			</div>
 			<jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
 		</div>
-		<script>
+	</body>
+	<script>
 		
 		$(document).ready(function(){
 			const $campos = $('.form-control'); 
@@ -101,5 +104,4 @@
 		}
 		
 	</script>
-	</body>
 </html>
