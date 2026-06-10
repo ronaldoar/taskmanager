@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 <c:if test="${empty sessionScope.usuarioLogado}">
-    <c:redirect url="/login.jsp"/>
+    <c:redirect url="/login"/>
 </c:if>
 
 <!DOCTYPE html>
