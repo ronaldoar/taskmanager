@@ -6,10 +6,8 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<div>
-		    <p>&copy; 2026 Task Manager</p>
-		</div>
+		<footer class="page-footer">
+			<p class="mb-0">Copyright © 2026. Task Manager.</p>
+		</footer>
 	</body>
-	<script src="${jsBootstrap}"></script>
-	<script src="${jsMain}"></script>
 </html>
