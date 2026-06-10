@@ -26,7 +26,7 @@
 										<div class="row mb-3">
 											<label for="username" class="col-sm-3 col-form-label">Username</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" name="username" id="inputEnterYourName" placeholder="Informe seu username">
+												<input type="text" class="form-control obrg" name="username" id="inputEnterYourName" placeholder="Informe seu username">
 											</div>
 										</div>
 										<div class="row mb-3">
@@ -87,7 +87,7 @@
 	<script>
 		
 		$(document).ready(function(){
-			const $campos = $('.form-control'); 
+			const $campos = $('.obrg'); 
 		    const $botao  = $('#btnCadastrar');
 
 		    // Executa a validação sempre que o usuário digitar ou mudar o valor
