@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <!-- Padrão de formatação do log (Data, Nível, Classe, Mensagem) -->
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Log no Console (Terminal) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- Log em Arquivo (Opcional, mas recomendado para histórico) -->
+        <RollingFile name="FileLog" fileName="logs/aplicacao.log" filePattern="logs/aplicacao-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- ========================================================== -->
+        <!-- CONFIGURAÇÕES ESPECÍFICAS DO HIBERNATE/JPA                 -->
+        <!-- ========================================================== -->
+        
+        <!-- 1. Mostra os comandos de criação/alteração de tabelas (DDL) -->
+        <Logger name="org.hibernate.tool.hbm2ddl" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLog"/>
+        </Logger>
+
+        <!-- 2. Mostra os comandos SQL executados (SELECT, INSERT, UPDATE) -->
+        <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLog"/>
+        </Logger>
+
+        <!-- 3. (Opcional) Mostra os parâmetros (?) preenchidos nos SQLs -->
+        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <!-- Logger raiz para o resto da sua aplicação -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLog"/>
+        </Root>
+    </Loggers>
+</Configuration>
