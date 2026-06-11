@@ -7,9 +7,11 @@
 
     <Appenders>
         <!-- Log no Console (Terminal) -->
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
-        </Console>
+      <Console name="Console" target="SYSTEM_OUT">
+	    <!-- O %highlight adiciona cores automáticas: azul para INFO, verde para DEBUG, vermelho apenas para ERROR -->
+	    <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n}{FATAL=red, ERROR=red, WARN=yellow, INFO=blue, DEBUG=green, TRACE=black}"/>
+	  </Console>
+      
 
         <!-- Log em Arquivo (Opcional, mas recomendado para histórico) -->
         <RollingFile name="FileLog" fileName="logs/aplicacao.log" filePattern="logs/aplicacao-%d{yyyy-MM-dd}-%i.log.gz">
