@@ -45,10 +45,11 @@ public class UsuarioCadastrarServlet extends HttpServlet {
 			 ValidatorCommons.validarSenhas(senha, confSenha);
 			 
 			 Usuario user = new Usuario();
+			 user.setUsername(username);
 			 user.setCelular(celular);
 			 user.setEmail(email);
 			 user.setNome(nomeCompl);
-			 user.setAtiva(StringUtil.isNotNull(ativo) ? true : false);
+			 user.setAtiva(StringUtil.isNotNull(ativo));
 			 
 			 new ConfiguracoesBusiness().cadastrar(JPAUtil.getEntityManager(), user);
 			 return "Usuário cadastrado com sucesso!";

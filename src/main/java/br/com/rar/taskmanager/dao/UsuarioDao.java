@@ -42,4 +42,14 @@ public class UsuarioDao {
             return null; // Retorna null se não encontrar nenhum usuário com esse email
         }
     }
+    
+    public Usuario buscarPorUsername(String username) {
+        String jpql = "SELECT u FROM Usuario u WHERE u.username = :pUsername";
+        
+        try {
+            return em.createQuery(jpql, Usuario.class).setParameter("pUsername", username).getSingleResult(); 
+        } catch (jakarta.persistence.NoResultException e) {
+            return null; // Retorna null se não encontrar nenhum usuário com esse email
+        }
+    }
 }
