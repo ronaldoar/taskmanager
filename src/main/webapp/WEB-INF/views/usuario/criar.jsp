@@ -13,6 +13,8 @@
 		    <div class="page-wrapper">
 				<div class="page-content">
 					<div class="col-xl-6 mx-auto">
+					
+						<span>${msg}</span>
 						<form action="${pageContext.request.contextPath}/usuario/criar" method="POST">
 							<div class="card border-top border-0 border-4 border-info">
 								<div class="card-body">

@@ -2,7 +2,11 @@ package br.com.rar.taskmanager.controller.usuario;
 
 import java.io.IOException;
 
+import br.com.rar.taskmanager.business.ConfiguracoesBusiness;
 import br.com.rar.taskmanager.controller.commons.ValidatorCommons;
+import br.com.rar.taskmanager.dao.JPAUtil;
+import br.com.rar.taskmanager.model.Usuario;
+import br.com.rar.taskmanager.util.StringUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,10 +33,28 @@ public class UsuarioCadastrarServlet extends HttpServlet {
 		 String confSenha 	= req.getParameter("confSenha");
 		 String ativo 	    = req.getParameter("ativo");
 		 
-		 ValidatorCommons.validar(username, nomeCompl, celular, email, senha, confSenha);
-		 
+		 String msg = cadastrar(username, nomeCompl, celular, email, senha, confSenha, ativo);
+		 req.setAttribute("msg", msg);
 		 req.getRequestDispatcher("/WEB-INF/views/usuario/criar.jsp").forward(req, resp);
 	}
 	
-	
+	private String cadastrar(String username, String nomeCompl, String celular, String email, String senha, String confSenha, String ativo){
+		
+		try {
+			 ValidatorCommons.validar(username, nomeCompl, celular, email, senha, confSenha);
+			 ValidatorCommons.validarSenhas(senha, confSenha);
+			 
+			 Usuario user = new Usuario();
+			 user.setCelular(celular);
+			 user.setEmail(email);
+			 user.setNome(nomeCompl);
+			 user.setAtiva(StringUtil.isNotNull(ativo) ? true : false);
+			 
+			 new ConfiguracoesBusiness().cadastrar(JPAUtil.getEntityManager(), user);
+			 return "Usuário cadastrado com sucesso!";
+
+		}catch(IllegalArgumentException ex) {
+			return ex.getMessage();
+		}		
+	}
 }
