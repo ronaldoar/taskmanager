@@ -26,37 +26,37 @@
 										<div class="row mb-3">
 											<label for="username" class="col-sm-3 col-form-label">Username</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control obrg" name="username" id="inputEnterYourName" placeholder="Informe seu username">
+												<input type="text" class="form-control obrg" name="username" id="inputEnterYourName" placeholder="Informe seu apelido">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="nome" class="col-sm-3 col-form-label">Nome Completo</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" name="nomeCompl" id="nome" placeholder="Enter Your Name">
+												<input type="text" class="form-control" name="nomeCompl" id="nome" placeholder="informe seu nome completo">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="celular" class="col-sm-3 col-form-label">Celular</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" name="celular" id="celular" placeholder="Phone No">
+												<input type="text" class="form-control" name="celular" id="celular" placeholder="seu numero">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="email" class="col-sm-3 col-form-label">Email</label>
 											<div class="col-sm-9">
-												<input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
+												<input type="email" class="form-control" name="email" id="email" placeholder="endereço de email">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="senha" class="col-sm-3 col-form-label">Senhar</label>
 											<div class="col-sm-9">
-												<input type="password" class="form-control" name="senha" id="senha" placeholder="Choose Password">
+												<input type="password" class="form-control" name="senha" id="senha" placeholder="informe sua senha">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="inputConfirmPassword2" class="col-sm-3 col-form-label">Confirmar Senha</label>
 											<div class="col-sm-9">
-												<input type="password" class="form-control" name="confSenha" id="confSenha" placeholder="Confirm Password">
+												<input type="password" class="form-control" name="confSenha" id="confSenha" placeholder="confirme sua senha">
 											</div>
 										</div>
 										<div class="row mb-3">
