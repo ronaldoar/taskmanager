@@ -50,7 +50,7 @@
 											</div>
 										</div>
 										<div class="row mb-3">
-											<label for="senha" class="col-sm-3 col-form-label">Senhar</label>
+											<label for="senha" class="col-sm-3 col-form-label">Senha</label>
 											<div class="col-sm-9">
 												<input type="password" class="form-control" name="senha" id="senha" placeholder="informe sua senha">
 											</div>
