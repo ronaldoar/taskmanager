@@ -11,4 +11,8 @@ public class ValidatorCommons {
 			if(StringUtil.isNull(p))throw new IllegalArgumentException("Todos os campos devem ser obrigatórios.");
 		}
 	}
+	
+	public static void validarSenhas(String senha, String confirmSenha) {
+		if(!senha.equals(confirmSenha))throw new IllegalArgumentException("As senhas não coincidem.");
+	}
 }
