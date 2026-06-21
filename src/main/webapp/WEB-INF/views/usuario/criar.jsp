@@ -34,31 +34,31 @@
 										<div class="row mb-3">
 											<label for="nome" class="col-sm-3 col-form-label">Nome Completo</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" name="nomeCompl" id="nome" placeholder="informe seu nome completo">
+												<input type="text" class="form-control obgr" name="nomeCompl" id="nome" placeholder="informe seu nome completo">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="celular" class="col-sm-3 col-form-label">Celular</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" name="celular" id="celular" placeholder="seu numero">
+												<input type="text" class="form-control obgr" name="celular" id="celular" placeholder="seu numero">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="email" class="col-sm-3 col-form-label">Email</label>
 											<div class="col-sm-9">
-												<input type="email" class="form-control" name="email" id="email" placeholder="endereço de email">
+												<input type="email" class="form-control obgr" name="email" id="email" placeholder="endereço de email">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="senha" class="col-sm-3 col-form-label">Senha</label>
 											<div class="col-sm-9">
-												<input type="password" class="form-control" name="senha" id="senha" placeholder="informe sua senha">
+												<input type="password" class="form-control obgr" name="senha" id="senha" placeholder="informe sua senha">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="inputConfirmPassword2" class="col-sm-3 col-form-label">Confirmar Senha</label>
 											<div class="col-sm-9">
-												<input type="password" class="form-control" name="confSenha" id="confSenha" placeholder="confirme sua senha">
+												<input type="password" class="form-control obgr"  name="confSenha" id="confSenha" placeholder="confirme sua senha">
 											</div>
 										</div>
 										<div class="row mb-3">
@@ -88,20 +88,45 @@
 	</body>
 	<script>
 		
-		$(document).ready(function(){
-			const $campos = $('.obrg'); 
-		    const $botao  = $('#btnCadastrar');
+		
+		$(document).ready(function() {
+		    // 1. Seleciona todos os inputs obrigatórios e o botão
+			const $campos 		 = $('.obgr');
+			const $botao  		 = $('#btnCadastrar');
 
-		    // Executa a validação sempre que o usuário digitar ou mudar o valor
-		    $campos.on('input change', () => verificarCampos($campos, $botao));
-		    
-		    // Executa uma vez ao carregar a página caso já existam dados salvos
-		    verificarCampos($campos, $botao);
+		    // 2. Função que verifica se todos os campos estão preenchidos
+		    function verificarCampos() {
+		        let todosPreenchidos = true;
+
+		        $campos.each(function() {
+		            // .trim() remove espaços em branco no início e no fim
+		            if ($(this).val().trim() === '') {
+		                todosPreenchidos = false;
+		                return false; // Interrompe o loop .each() assim que encontrar um vazio
+		            }
+		        });
+
+		        // 3. Habilita ou desabilita o botão com base na verificação
+		        if (todosPreenchidos) {
+		            $botao.prop('disabled', false); // Habilita
+		        } else {
+		            $botao.prop('disabled', true);  // Desabilita
+		        }
+		    }
+
+		    // 4. Executa a verificação inicialmente (por segurança)
+		    verificarCampos();
+			validarSenha();
+		    // 5. Dispara a verificação a cada vez que o usuário digita algo nos campos
+		    $campos.on('input', verificarCampos);
 		});
 		
-		function verificarCampos(campos, botao) {
-		    const todosPreenchidos = campos.toArray().every(el => $(el).val().trim() !== '');
-		    botao.prop('disabled', !todosPreenchidos);
+		function validarSenha(){
+			var senha = $('#senha').val();
+			var confsenha = $('#confSenha').val();
+			if(senha !== confSenha){
+				alert('senhas diferentes')
+			}
 		}
 		
 	</script>
