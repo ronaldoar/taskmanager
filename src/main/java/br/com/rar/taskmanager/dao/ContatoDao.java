@@ -38,4 +38,26 @@ public class ContatoDao {
             return null; // Retorna null se não encontrar nenhum usuário com esse email
         }
     }
+	public void atualizar(Contato contato) {
+
+	    em.getTransaction().begin();
+
+	    em.merge(contato);
+
+	    em.getTransaction().commit();
+
+	}
+	public void excluir(Long id) {
+
+	    em.getTransaction().begin();
+
+	    Contato contato = em.find(Contato.class, id);
+
+	    if (contato != null) {
+	        em.remove(contato);
+	    }
+
+	    em.getTransaction().commit();
+
+	}
 }
