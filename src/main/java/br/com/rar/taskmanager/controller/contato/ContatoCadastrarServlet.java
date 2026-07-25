@@ -2,6 +2,10 @@ package br.com.rar.taskmanager.controller.contato;
 
 import java.io.IOException;
 
+import br.com.rar.taskmanager.dao.ContatoDao;
+import br.com.rar.taskmanager.dao.JPAUtil;
+import br.com.rar.taskmanager.model.Contato;
+import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +20,35 @@ public class ContatoCadastrarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/WEB-INF/views/contato/criar.jsp").forward(req, resp);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+	        throws ServletException, IOException {
 
+	    EntityManager em = JPAUtil.getEntityManager();
+
+	    try {
+	        Contato contato = new Contato();
+
+	        contato.setNome(req.getParameter("nome"));
+	        contato.setSobrenome(req.getParameter("sobrenome"));
+	        contato.setCelular(req.getParameter("celular"));
+	        contato.setEmail(req.getParameter("email"));
+	        contato.setEndereco(req.getParameter("endereco"));
+	        contato.setComentario(req.getParameter("comentario"));
+	        contato.setAtiva(true);
+
+	        ContatoDao contatoDao = new ContatoDao(em);
+	        contatoDao.cadastrar(contato);
+
+	        req.setAttribute("mensagem", "Contato cadastrado com sucesso!");
+
+	        req.getRequestDispatcher("/WEB-INF/views/contato/criar.jsp")
+	           .forward(req, resp);
+
+	    } finally {
+	        em.close();
+	    }
+	}
 
 }

@@ -21,7 +21,7 @@ public class ContatoDao {
 	}
 	
 	public List<Contato> listarTodos(){
-		String jpql = "SELECT c FROM Tarefa c";
+		String jpql = "SELECT c FROM Contato c";
 		TypedQuery<Contato> query = em.createQuery(jpql, Contato.class);
 		return query.getResultList();
 	}
@@ -30,7 +30,7 @@ public class ContatoDao {
 		return em.find(Contato.class, id);
 	}
 	public Contato buscarPorEmail(String email) {
-        String jpql = "SELECT c FROM Usuario c WHERE u.email = :pEmail";
+        String jpql = "SELECT c FROM Contato c WHERE c.email = :pEmail";
         
         try {
             return em.createQuery(jpql, Contato.class).setParameter("pEmail", email).getSingleResult(); // Retorna um único objeto

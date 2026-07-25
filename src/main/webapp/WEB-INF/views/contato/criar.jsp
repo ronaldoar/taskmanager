@@ -16,42 +16,54 @@
 									<h5 class="mb-0 text-danger">Registrar Contato</h5>
 								</div>
 								<hr>
-								<form class="row g-3">
+								<%
+								String mensagem = (String) request.getAttribute("mensagem");
+								if (mensagem != null) {
+								%>
+								
+								<div class="alert alert-success">
+							    <%= mensagem %>
+								</div>
+									
+									<%
+									}
+									%>
+								<form class="row g-3" action="${pageContext.request.contextPath}/contato/cadastrar" method="post">
 									<div class="col-md-6">
 										<label for="inputLastName1" class="form-label">Nome</label>
 										<div class="input-group"> <span class="input-group-text bg-transparent"><i class='bx bxs-user'></i></span>
-											<input type="text" class="form-control border-start-0" id="inputLastName1" placeholder="primeiro nome" />
+											<input type="text" class="form-control border-start-0" id="inputLastName1" Name="nome"  placeholder="primeiro nome" />
 										</div>
 									</div>
 									<div class="col-md-6">
 										<label for="inputLastName2" class="form-label">Sobrenome</label>
 										<div class="input-group"> <span class="input-group-text bg-transparent"><i class='bx bxs-user'></i></span>
-											<input type="text" class="form-control border-start-0" id="inputLastName2" placeholder="sobrenome" />
+											<input type="text" class="form-control border-start-0" id="inputLastName2" Name="sobrenome" placeholder="sobrenome" />
 										</div>
 									</div>
 									<div class="col-12">
 										<label for="inputPhoneNo" class="form-label">Celular</label>
 										<div class="input-group"> <span class="input-group-text bg-transparent"><i class='bx bxs-microphone' ></i></span>
-											<input type="text" class="form-control border-start-0" id="inputPhoneNo" placeholder="telefone" />
+											<input type="text" class="form-control border-start-0" id="inputPhoneNo" Name="celular" placeholder="telefone" />
 										</div>
 									</div>
 									<div class="col-12" style="position: relative;">
 										<label for="inputEndereco" class="form-label">Endereço</label>
 										<div class="input-group">
 											<span class="input-group-text bg-transparent"><i class='bx bxs-map'></i></span>
-											<input type="text" class="form-control border-start-0" id="inputEndereco" placeholder="digite o endereço" autocomplete="off" />
+											<input type="text" class="form-control border-start-0" id="inputEndereco" Name="endereco" placeholder="digite o endereço" autocomplete="off" />
 										</div>
 										<div id="sugestoesEndereco" class="list-group" style="position: absolute; z-index: 1000; width: 100%;"></div>
 									</div>
 									<div class="col-12">
 										<label for="inputEmailAddress" class="form-label">Email</label>
 										<div class="input-group"> <span class="input-group-text bg-transparent"><i class='bx bxs-message' ></i></span>
-											<input type="text" class="form-control border-start-0" id="inputEmailAddress" placeholder="endereço de email" />
+											<input type="text" class="form-control border-start-0" id="inputEmailAddress" Name="email" placeholder="endereço de email" />
 										</div>
 									</div>
 									<div class="col-12">
 										<label for="inputAddress3" class="form-label">Comentario</label>
-										<textarea class="form-control" id="inputAddress3" placeholder="inserir comentario" rows="3"></textarea>
+										<textarea class="form-control" id="inputAddress3" Name="comentario" placeholder="inserir comentario" rows="3"></textarea>
 									</div>
 									<div class="col-12">
 										<button type="submit" class="btn btn-danger px-5">Cadastrar</button>
