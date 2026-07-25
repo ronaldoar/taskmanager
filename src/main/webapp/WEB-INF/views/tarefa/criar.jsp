@@ -30,7 +30,16 @@
 
                         <hr>
 
-                        <form action="${pageContext.request.contextPath}/tarefa/criar"
+                        <div id="alerta-sucesso" class="alert alert-success d-none" role="alert">
+                            Tarefa cadastrada com sucesso!
+                        </div>
+
+                        <div id="alerta-erro" class="alert alert-danger d-none" role="alert">
+                            Erro ao cadastrar tarefa. Tente novamente.
+                        </div>
+
+                        <form id="form-criar-tarefa"
+                              action="${pageContext.request.contextPath}/tarefa/criar"
                               method="post"
                               class="row g-3">
 
@@ -114,6 +123,7 @@
 
                                 <button
                                     type="submit"
+                                    id="btn-cadastrar"
                                     class="btn btn-primary">
 
                                     <i class="bx bx-save"></i>
@@ -138,6 +148,50 @@
     <jsp:include page="/WEB-INF/views/fragments/footer.jsp"/>
 
 </div>
+
+<script>
+document.getElementById('form-criar-tarefa').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var form = event.target;
+    var btn = document.getElementById('btn-cadastrar');
+    var alertaSucesso = document.getElementById('alerta-sucesso');
+    var alertaErro = document.getElementById('alerta-erro');
+
+    alertaSucesso.classList.add('d-none');
+    alertaErro.classList.add('d-none');
+    btn.disabled = true;
+
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: new URLSearchParams(formData)
+    })
+    .then(function (response) {
+        return response.json().then(function (data) {
+            return { status: response.status, data: data };
+        });
+    })
+    .then(function (resultado) {
+        if (resultado.status === 200 && resultado.data.sucesso) {
+            alertaSucesso.textContent = resultado.data.mensagem;
+            alertaSucesso.classList.remove('d-none');
+            form.reset();
+        } else {
+            alertaErro.textContent = resultado.data.mensagem || 'Erro ao cadastrar tarefa.';
+            alertaErro.classList.remove('d-none');
+        }
+    })
+    .catch(function () {
+        alertaErro.textContent = 'Erro de comunicação com o servidor.';
+        alertaErro.classList.remove('d-none');
+    })
+    .finally(function () {
+        btn.disabled = false;
+    });
+});
+</script>
 
 </body>
 </html>

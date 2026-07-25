@@ -1,11 +1,9 @@
 package br.com.rar.taskmanager.controller.contato;
 
 import java.io.IOException;
-import java.util.List;
 
 import br.com.rar.taskmanager.dao.ContatoDao;
 import br.com.rar.taskmanager.dao.JPAUtil;
-import br.com.rar.taskmanager.model.Contato;
 import jakarta.persistence.EntityManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,33 +11,41 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/contato/listar")
-public class ContatoListarServlet extends HttpServlet {
+@WebServlet("/contato/excluir")
+public class ContatoExcluirServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         EntityManager em = JPAUtil.getEntityManager();
 
         try {
-            ContatoDao contatoDao = new ContatoDao(em);
 
-            List<Contato> contatos = contatoDao.listarTodos();
+            ContatoDao dao = new ContatoDao(em);
 
-            System.out.println("Quantidade de contatos: " + contatos.size());
+            String[] ids = req.getParameterValues("ids");
 
-            req.setAttribute("contatos", contatos);
+            if (ids != null) {
 
-            req.setAttribute("contatos", contatos);
+                for (String id : ids) {
 
-            req.getRequestDispatcher("/WEB-INF/views/contato/listar.jsp")
-                    .forward(req, resp);
+                    dao.excluir(Long.valueOf(id));
+
+                }
+
+            }
+
+            resp.sendRedirect(req.getContextPath() + "/contato/listar");
 
         } finally {
+
             em.close();
+
         }
+
     }
+
 }

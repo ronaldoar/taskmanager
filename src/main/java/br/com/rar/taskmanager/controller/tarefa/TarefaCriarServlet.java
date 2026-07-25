@@ -28,6 +28,9 @@ public class TarefaCriarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
         EntityManager em = JPAUtil.getEntityManager();
 
         try {
@@ -44,8 +47,12 @@ public class TarefaCriarServlet extends HttpServlet {
             TarefaDao tarefaDao = new TarefaDao(em);
             tarefaDao.cadastrar(tarefa);
 
-            resp.sendRedirect(req.getContextPath() + "/tarefa/listar");
+            resp.setStatus(HttpServletResponse.SC_OK);
+            resp.getWriter().write("{\"sucesso\": true, \"mensagem\": \"Tarefa cadastrada com sucesso!\"}");
 
+        } catch (Exception e) {
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            resp.getWriter().write("{\"sucesso\": false, \"mensagem\": \"Erro ao cadastrar tarefa. Tente novamente.\"}");
         } finally {
             em.close();
         }
